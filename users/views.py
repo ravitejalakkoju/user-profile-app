@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from .forms import UpdateUserForm	
 from authentication.models import User
 
@@ -25,11 +24,3 @@ def delete_user_profile(request, user_id):
 		user.delete()
 		return redirect('authentication:register')
 	return render(request, 'users/delete-user-profile.html')
-
-def subscription(request, user_id):
-	user = User.objects.get(id=user_id)
-	if request.method == 'POST':
-		user.is_subscribed = not user.is_subscribed
-		user.save()
-		return redirect('users:getuserprofile', user_id)
-	return render(request, 'users/subscription.html')
