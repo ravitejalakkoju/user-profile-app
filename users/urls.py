@@ -6,5 +6,8 @@ from .import views
 app_name = 'users'
 
 urlpatterns = [
-	path('<user_id>', views.userprofile, name='userprofile')
+	path('<user_id>', views.get_user_profile, name='getuserprofile'),
+	path('<user_id>', views.edit_user_profile, name='edituserprofile'),
+	path('<user_id>', views.update_user_profile, name='updateuserprofile'),
+	path('<user_id>', views.delete_user_profile, name='deleteuserprofile'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
