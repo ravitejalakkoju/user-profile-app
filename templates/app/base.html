@@ -28,10 +28,13 @@
                                 {% else %}
                                     <img src="https://i.pinimg.com/736x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg" class="avatar" alt="Avatar" height="24px">
                                 {% endif %}
-                                <span class="ms-1 fs-6 text-dark">{{user.username}}</span>
+                                <span class="ms-1 fs-6 text-dark">
+                                    {{user.username}}
+                                </span>
                               </a>
                               <ul class="dropdown-menu align-items-center position-absolute" style="left: -5rem;">
                                 <li><a class="dropdown-item text-secondary d-flex align-items-center" href="{% url 'users:getuserprofile' user.id %}"><i class="fa fa-user-o me-2"></i> Profile</a></li>
+                                <li><a class="dropdown-item text-secondary d-flex align-items-center" href="{% url 'users:subscription' user.id %}"><i class="fa-solid fa-arrow-right me-2"></i> Subscriptions</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li><a class="dropdown-item text-secondary d-flex align-items-center" href="{% url 'authentication:logout' %}"><i class="fa-solid fa-power-off me-2"></i> Logout</a></li>
                               </ul>

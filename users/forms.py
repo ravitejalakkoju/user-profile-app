@@ -7,7 +7,7 @@ class UpdateUserForm(UserChangeForm):
     location = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email',  'age', 'location', 'profile_picture']
+        fields = ['first_name', 'last_name', 'username', 'email',  'age', 'location', 'profile_picture', 'is_subscribed']
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control w-100'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),

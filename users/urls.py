@@ -9,4 +9,5 @@ urlpatterns = [
 	path('<user_id>/', views.get_user_profile, name='getuserprofile'),
 	path('<user_id>/update/', views.update_user_profile, name='updateuserprofile'),
 	path('<user_id>/delete', views.delete_user_profile, name='deleteuserprofile'),
+	path('<user_id>/subscription', views.subscription, name='subscription'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

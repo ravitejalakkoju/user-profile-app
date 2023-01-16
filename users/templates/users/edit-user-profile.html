@@ -8,8 +8,9 @@
     	<form method="POST" action="{% url 'users:updateuserprofile' user.id %}" enctype="multipart/form-data">
 	        {% csrf_token %}
 	        {{ form | crispy}}
-	        <div class="text-center p-0 w-100">
-	        	<button name="submit" class="btn btn-dark w-100">Update</button>
+	        <div class="text-center p-0 w-100 d-flex">
+	        	<a class="btn btn-outline-dark w-50 me-3" href="{% url 'users:getuserprofile' user.id %}">Cancel</a>
+	        	<button name="submit" class="btn btn-dark w-50">Update</button>
 	        </div>
 	    </form>
     </div>

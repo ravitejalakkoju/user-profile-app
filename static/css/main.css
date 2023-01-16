@@ -21,6 +21,11 @@
 	display: none;
 }
 
+#div_id_is_subscribed {
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
 .readonlypasswordhashwidget {
     display: none;
 }
