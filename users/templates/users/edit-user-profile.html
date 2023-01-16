@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}       
+
+{% block content %}
+<div class="m-auto col-lg-4 col-md-8 col-11 border border-dark rounded px-2 py-4 my-3">
+    <div class="container position-relative h-25 d-flex flex-column justify-content-center align-items-center" style="width:90%; min-height: 100px;">   
+    	<h3 class="text-center mb-3">Edit User Profile</h3>
+    	<form method="POST" action="{% url 'users:updateuserprofile' user.id %}" enctype="multipart/form-data">
+	        {% csrf_token %}
+	        {{ form | crispy}}
+	        <div class="text-center p-0 w-100">
+	        	<button name="submit" class="btn btn-dark w-100">Update</button>
+	        </div>
+	    </form>
+    </div>
+</div>
+{% endblock content %}

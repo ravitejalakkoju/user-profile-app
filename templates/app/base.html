@@ -21,12 +21,16 @@
                 <div id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         {% if user.is_authenticated %}
-                            <div class="nav-item dropdown">
+                            <div class="nav-item dropdown position-relative">
                               <a class="nav-link dropdown-toggle user-action cursor-pointer d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://static.vecteezy.com/system/resources/thumbnails/009/734/564/small/default-avatar-profile-icon-of-social-media-user-vector.jpg" class="avatar" alt="Avatar" height="24px" class="rounded-circle"> 
+                                {% if user.profile_picture %}
+                                    <img src="{{user.profile_picture.url}}" class="rounded" alt="Avatar" height="24px">
+                                {% else %}
+                                    <img src="https://i.pinimg.com/736x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg" class="avatar" alt="Avatar" height="24px">
+                                {% endif %}
                                 <span class="ms-1 fs-6 text-dark">{{user.username}}</span>
                               </a>
-                              <ul class="dropdown-menu align-items-center">
+                              <ul class="dropdown-menu align-items-center position-absolute" style="left: -5rem;">
                                 <li><a class="dropdown-item text-secondary d-flex align-items-center" href="{% url 'users:getuserprofile' user.id %}"><i class="fa fa-user-o me-2"></i> Profile</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li><a class="dropdown-item text-secondary d-flex align-items-center" href="{% url 'authentication:logout' %}"><i class="fa-solid fa-power-off me-2"></i> Logout</a></li>

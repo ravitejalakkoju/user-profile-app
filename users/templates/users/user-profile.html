@@ -1,24 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="m-auto col-lg-4 col-md-8 col-11 border border-dark rounded px-2 py-4">
-    <div class="container position-relative h-25 d-flex flex-column justify-content-center align-items-center" style="width:90%; min-height: 100px;">   
-        <a href="{% url 'users:edituserprofile' user.id %}" class="position-absolute top-0 end-0"><i class="fa-regular fa-pen-to-square text-dark fs-5"></i></a>
-        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" class="w-50 mt-3 border border-dark rounded">
-        {% if user.firstname or user.lastname %}
-        	<h5 class="p-0 m-0 mt-1">
-        		{{user.full_name}}
-        	</h5>
+<div class="m-auto col-lg-4 col-md-8 col-11 border border-dark rounded px-3 py-4">
+    <div class="container position-relative h-25 d-flex flex-column justify-content-center align-items-center p-0" style="width:90%; min-height: 100px;">   
+        <a href="{% url 'users:updateuserprofile' user.id %}" class="position-absolute top-0 end-0"><i class="fa-regular fa-pen-to-square text-dark fs-5"></i></a>
+        {% if user.profile_picture %}
+	        <img src="{{user.profile_picture.url}}" class="w-50 mt-3 border border-dark rounded">
+	    {% else %}
+	        <img src="https://i.pinimg.com/736x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg" class="w-50 mt-3 border border-dark rounded">
         {% endif %}
+        <h5 class="p-0 m-0 mt-1">
+        	{{user.first_name}} {{user.last_name}}
+        </h5>
         <div>@{{user.username}}</div>
-        <div class="row row-cols-2 mt-4">
-		    <div class="col-4 fw-bold">Email:</div>
-		    <div class="col-8">{{user.email}}</div>
-		    <div class="col-4 fw-bold">Age:</div>
-		    <div class="col-8">{{user.age}}</div>
-		    <div class="col-4 fw-bold">Location:</div>
-		    <div class="col-8">{{user.location}}</div>
-		  </div>
+        <div class="row row-cols-2 mt-4" style="min-width: 65%;">
+		    {% if user.email %}
+			    <div class="col-4 fw-bold">Email:</div>
+			    <div class="col-8">{{user.email}}</div>
+		    {% endif %}
+		    {% if user.age %}
+			    <div class="col-4 fw-bold">Age:</div>
+			    <div class="col-8">{{user.age}}</div>
+		    {% endif %}
+		    {% if user.location %}
+			    <div class="col-4 fw-bold">Location:</div>
+			    <div class="col-8">{{user.location}}</div>
+		    {% endif %}
+		</div>
+		<div class="w-100 text-end">
+			<a class="btn btn-outline-danger mt-5" href="{% url 'users:deleteuserprofile' user.id %}">Delete Account</a>
+		</div>
     </div>
 </div>
 {% endblock content %}

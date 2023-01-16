@@ -11,7 +11,7 @@ def log_in(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, request.POST)
         if AuthService.log_in(request, request.POST):
-            return redirect(reverse('authentication:index'))
+            return redirect('users:getuserprofile', request.user.id)
         else:
             return render(request, 'registration/login.html', {'form': form})
     return render(request, 'registration/login.html', {'form':  CustomAuthenticationForm()})

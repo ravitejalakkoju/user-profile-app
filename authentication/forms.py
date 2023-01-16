@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.core.validators import MinLengthValidator, RegexValidator
 from .models import User
 
 class CustomAuthenticationForm(AuthenticationForm):
