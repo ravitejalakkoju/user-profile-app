@@ -38,3 +38,14 @@
 .help-block, .controls > ul {
 	font-size: 0.9rem;
 }
+
+.social-icon {
+    text-decoration: none;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 35px;
+    width: 35px;
+}

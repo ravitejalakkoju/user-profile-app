@@ -5,7 +5,10 @@ from .services.auth_service import AuthService
 from .forms import RegistrationForm, CustomAuthenticationForm
 
 def index(request):
-    return render(request, 'base.html')
+    if not request.user:    
+        return redirect('users:getuserprofile', request.user.id)
+    else:
+        return redirect('authentication:login')
 
 def log_in(request):
     if request.method == 'POST':
