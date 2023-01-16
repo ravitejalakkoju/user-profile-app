@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mt-5">Logged Out</h2>
+<div class="container p-3 text-center" style="width:40%;">   
+    Thanks for spending some quality time with the web site today.
+    <div><a href="{% url 'authentication:login' %}">Log In again</a></div>
+</div>
+{% endblock content %}
