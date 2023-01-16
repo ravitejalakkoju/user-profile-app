@@ -5,7 +5,7 @@ from .services.auth_service import AuthService
 from .forms import RegistrationForm, CustomAuthenticationForm
 
 def index(request):
-    if not request.user:    
+    if request.user.is_authenticated:    
         return redirect('users:getuserprofile', request.user.id)
     else:
         return redirect('authentication:login')
