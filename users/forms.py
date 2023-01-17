@@ -17,4 +17,4 @@ class UpdateUserForm(UserChangeForm):
 
     def __init__(self, *args, **kwargs):
         super(UpdateUserForm, self).__init__(*args, **kwargs)
-        self.fields['password'].help_text = 'Raw passwords are not stored, so there is no way to see this user’s password.'
+        self.fields['password'].help_text = 'Raw passwords are not stored, so there is no way to see your password.'
