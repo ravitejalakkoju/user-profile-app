@@ -32,7 +32,7 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            if AuthService.register(request.POST):
-                return redirect(reverse('authentication:login'))
+            if AuthService.register(request, request.POST):
+                return redirect('users:getuserprofile', request.user.id)
         return render(request, 'registration/register.html', {'form': form})
     return render(request, 'registration/register.html', {'form': RegistrationForm()})
