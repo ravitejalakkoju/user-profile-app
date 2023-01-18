@@ -37,10 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
-    'users',
+    'myprofile',
     'subscriptions',
     'crispy_forms',
     'crispy_bootstrap5',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +63,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/app')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/app'), os.path.join(BASE_DIR, "templates", "allauth")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,6 +95,13 @@ DATABASES = {
 
 AUTH_USER_MODEL = 'authentication.User'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -105,6 +117,38 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'APP': {
+            'client_id': '639897171384-uveet337hq7a81vd3evv3epti2ef6fg6.apps.googleusercontent.com',
+            'secret': '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',
+            'key': 'AIzaSyC5LrIt5KcPhP9pcMB5MvAgJP8Z-CiMPxc'
+        },
+    },
+    'facebook': {
+        'APP': {
+            'client_id': '1108372296499816',
+            'secret': '61a9f5fdbd5d060a0d3bf9b63b4211a1',
+            'key': '61a9f5fdbd5d060a0d3bf9b63b4211a1',
+            'scope': ['email', 'public_profile'],
+        },
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'METHOD': 'oauth2',
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
+    }
+}
+
+# SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

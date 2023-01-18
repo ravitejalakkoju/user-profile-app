@@ -2,16 +2,14 @@
 {% load crispy_forms_tags %}       
 
 {% block content %}
-<div class="m-auto col-lg-4 col-md-8 col-11 border border-dark rounded px-2 py-4">
-    <h2 class="text-center">Register</h2>
+    <h2 class="text-center">Sign Up</h2>
     <div class="container" style="width:90%;">  
-    <form method="POST" action="{% url 'authentication:register' %}">
+    <form method="POST" action="{% url 'authentication:signup' %}">
         {% csrf_token %}
         {{ form|crispy }}
         <div class="text-center p-0">
-        <button name="submit" class="btn btn-dark w-100">Register</button>
+        <button name="submit" class="btn btn-dark w-100">Sign Up</button>
         <input type="hidden" name="next" value="{% url 'authentication:login' %}"/>
         </div>
     </form>
-</div>
 {% endblock content %}

@@ -6,7 +6,7 @@ from .forms import RegistrationForm, CustomAuthenticationForm
 
 def index(request):
     if request.user.is_authenticated:    
-        return redirect('users:getuserprofile', request.user.id)
+        return redirect('myprofile:index')
     else:
         return redirect('authentication:login')
 
@@ -14,13 +14,13 @@ def log_in(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, request.POST)
         if AuthService.log_in(request, request.POST):
-            return redirect('users:getuserprofile', request.user.id)
+            return redirect('myprofile:index')
         else:
             return render(request, 'registration/login.html', {'form': form})
     return render(request, 'registration/login.html', {'form':  CustomAuthenticationForm()})
 
-def logged_in(request):
-    return render(request, 'base.html')
+def oauth_log_in(request):
+    return redirect('myprofile:index')
 
 def log_out(request):
     if AuthService.log_out(request):
@@ -28,11 +28,11 @@ def log_out(request):
     else: 
         HttpResponse('Failed to log out')
 
-def register(request):
+def sign_up(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
             if AuthService.register(request, request.POST):
-                return redirect('users:getuserprofile', request.user.id)
-        return render(request, 'registration/register.html', {'form': form})
-    return render(request, 'registration/register.html', {'form': RegistrationForm()})
+                return redirect('myprofile:index')
+        return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': RegistrationForm()})

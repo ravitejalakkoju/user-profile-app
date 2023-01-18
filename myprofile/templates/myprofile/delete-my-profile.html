@@ -1,17 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="m-auto col-lg-4 col-md-8 col-11 border border-dark rounded px-2 py-4">
     <div class="container position-relative h-25 d-flex flex-column justify-content-center align-items-center" style="width:90%; min-height: 100px;">   
         <h4 class="text-center mb-3">Do you want to delete your <b>Account</b> ?</h4>
-        <form method="POST" action="{% url 'users:deleteuserprofile' user.id %}">
+        <form method="POST" action="{% url 'myprofile:delete'%}">
             {% csrf_token %}
             <div class="text-center p-0 w-100">
                 <input type="submit" class="btn btn-sm btn-outline-danger" value="Delete" />
-                <a class= "btn btn-sm btn-dark" href="{% url 'users:getuserprofile' user.id %}">Cancel</a>
+                <a class= "btn btn-sm btn-dark" href="{% url 'myprofile:index'%}">Cancel</a>
             </div>
         </form>
     </div>
-</div>           
-
 {% endblock content %}

@@ -1,6 +1,6 @@
 from authentication.models import User
 
-class UserManageService:
+class UsersManageService:
     def get_user(user_id):
         try:
             user = User.objects.get(id=user_id)

@@ -7,7 +7,7 @@ from django.http import HttpResponseNotFound
 def subscribe(request, subscription_id):
 	if request.user.is_authenticated:
 		if request.method == 'POST' and SubscriptionService.subscribe(subscription_id):
-			return redirect('users:getuserprofile', request.user.id)
+			return redirect('myprofile:index')
 	else:
 		return HttpResponseNotFound()
 	return render(request, 'subscriptions/subscribe.html', {'subscription_id': subscription_id})
@@ -15,7 +15,7 @@ def subscribe(request, subscription_id):
 def unsubscribe(request, subscription_id):
 	if request.user.is_authenticated:
 		if request.method == 'POST' and SubscriptionService.unsubscribe(subscription_id):
-			return redirect('users:getuserprofile', request.user.id)
+			return redirect('myprofile:index')
 	else:
 		return HttpResponseNotFound()
 	return render(request, 'subscriptions/unsubscribe.html', {'subscription_id': subscription_id})

@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 
+{% block subscription %}
+	{% if not user.is_subscribed %}
+	<div class="m-auto col-11 border border-dark bg-dark rounded py-2 px-3 mb-2" style="max-width: 670px;">
+		<a href="{% url 'subscriptions:subscribe' user.id %}" class="w-100 d-flex align-items-center justify-content-between text-decoration-none text-light">Switch to subscription <i class="fa-solid fa-arrow-right"></i></a>
+	</div>
+	{% endif %}
+{% endblock subscription %}
 {% block content %}
-{% if not user.is_subscribed %}
-<div class="m-auto col-lg-4 col-md-8 col-11 border border-dark bg-dark rounded py-2 px-3 mb-2">
-	<a href="{% url 'subscriptions:subscribe' user.id %}" class="w-100 d-flex align-items-center justify-content-between text-decoration-none text-light">Switch to subscription <i class="fa-solid fa-arrow-right"></i></a>
-</div>
-{% endif %}
-<div class="m-auto col-lg-4 col-md-8 col-11 border border-dark rounded px-3 py-4">
+
     <div class="container position-relative h-25 d-flex flex-column justify-content-center align-items-center p-0" style="width:90%; min-height: 100px;">   
-        <a href="{% url 'users:updateuserprofile' user.id %}" class="position-absolute top-0 end-0"><i class="fa-regular fa-pen-to-square text-dark fs-5"></i></a>
+        <a href="{% url 'myprofile:update'%}" class="position-absolute top-0 end-0"><i class="fa-regular fa-pen-to-square text-dark fs-5"></i></a>
         {% if user.profile_picture %}
 	        <img src="{{user.profile_picture.url}}" class="w-50 mt-3 border border-dark rounded">
 	    {% else %}
 	        <img src="https://i.pinimg.com/736x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg" class="w-50 mt-3 border border-dark rounded">
         {% endif %}
-        <h5 class="p-0 m-0 mt-1">
+        <h5 class="p-0 m-0 mt-1 text-center fw-bold">
         	{{user.first_name}} {{user.last_name}} 
         	{% if user.is_subscribed %}
                 <span class="text-primary fs-6"><i class="fa-solid fa-circle-check"></i></span>
@@ -23,21 +25,20 @@
         <div>@{{user.username}}</div>
         <div class="row row-cols-2 mt-4" style="min-width: 65%;">
 		    {% if user.email %}
-			    <div class="col-4 fw-bold">Email:</div>
-			    <div class="col-8">{{user.email}}</div>
+			    <div class="col-3 fw-bold">Email:</div>
+			    <div class="col-12 col-sm-9">{{user.email}}</div>
 		    {% endif %}
 		    {% if user.age %}
-			    <div class="col-4 fw-bold">Age:</div>
-			    <div class="col-8">{{user.age}}</div>
+			    <div class="col-3 fw-bold">Age:</div>
+			    <div class="col-9">{{user.age}}</div>
 		    {% endif %}
 		    {% if user.location %}
-			    <div class="col-4 fw-bold">Location:</div>
-			    <div class="col-8">{{user.location}}</div>
+			    <div class="col-3 fw-bold">Location:</div>
+			    <div class="col-9">{{user.location}}</div>
 		    {% endif %}
 		</div>
 		<div class="w-100 text-end">
-			<a class="btn btn-outline-danger mt-5" href="{% url 'users:deleteuserprofile' user.id %}">Delete Account</a>
+			<a class="btn btn-outline-danger mt-5" href="{% url 'myprofile:delete'%}">Delete Account</a>
 		</div>
     </div>
-</div>
 {% endblock content %}
