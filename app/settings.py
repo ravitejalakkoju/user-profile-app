@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-&o)v(ma-lo9%mg63-m@4)#78#am3*bu^4ct_5rs7@8b+52ok-a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'authentication',
     'myprofile',
     'subscriptions',
+    'sslserver',
     'crispy_forms',
     'crispy_bootstrap5',
     'allauth',
@@ -175,3 +176,9 @@ FILE_UPLOAD_PERMISSIONS = 0O640
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

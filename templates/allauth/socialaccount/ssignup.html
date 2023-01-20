@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}       
+{% load socialaccount %}
+
+{% block content %}
+  <div class="d-flex flex-column justify-content-center m-auto" style="min-height: 30vh; max-width: 90%;">
+    <h2 class="text-center mb-3">Sign Up Via 
+      {% if request.path == '/google/signup/' %}
+        Google
+      {% elif request.path == '/social/signup/' %}
+        Facebook
+      {% endif %}
+    </h2>
+    <p>You are about to use your Facebook account to login to localhost:8000. As a final step, please complete the following form</p>
+    <form id="signup_form" method="post" action="/social/signup/">
+      {% csrf_token %}
+      <div id="div_id_username" class="control-group"> 
+        <label for="id_username" class="control-label requiredField">
+          Username<span class="asteriskField">*</span> 
+        </label> 
+        <div class="controls"> 
+          <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" class="textinput textInput" required="true" id="id_username"> 
+        </div> 
+      </div>
+      <div id="div_id_email" class="control-group"> 
+        <label for="id_email" class="control-label requiredField">
+          E-mail<span class="asteriskField">*</span>
+        </label> 
+        <div class="controls"> 
+          <input type="email" name="email" placeholder="E-mail address" class="textinput textInput" required="true" autocomplete="email" id="id_email">
+        </div> 
+      </div>
+      <div class="d-flex gap-2 mt-4 mb-2">
+        <a class="btn btn-outline-dark text-center w-50" href="{% url 'authentication:index' %}">Cancel</a>
+        <button type="submit" class="btn btn-dark text-center w-50">Sign Up</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

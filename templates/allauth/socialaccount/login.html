@@ -3,10 +3,8 @@
 {% load socialaccount %}
 
 {% block content %}
-asd
-<div class="m-auto col-lg-4 col-md-8 col-11 border border-dark rounded p-4 align-middle">
-  <div class="d-flex flex-column justify-content-center" style="min-height: 30vh;">
-    <h2 class="text-center">Sign In Via 
+  <div class="d-flex flex-column justify-content-center m-auto" style="min-height: 30vh; max-width: 90%;">
+    <h2 class="text-center">Log In Via 
       {% if request.path == '/google/login/' %}
         Google
       {% elif request.path == '/facebook/login/' %}
@@ -17,18 +15,17 @@ asd
     </h2>
     <p class="text-center">You are about to sign in using a third party account from 
     {% if request.path == '/google/login/' %}
-      Google
+      Google.
     {% elif request.path == '/facebook/login/' %}
-      Facebook
+      Facebook.
     {% elif request.path == '/apple/login/' %}
-      Apple
+      Apple.
     {% endif %}
-    .</p>
+    </p>
     <form method="post" class="d-flex gap-2">
       {% csrf_token %}
-      <a class="btn btn-outline-dark text-center w-50" href="{% url 'authentication:index' %}">Cancel</a>
+      <a class="btn btn-outline-dark text-center w-50" href="{% url 'myprofile:index' %}">Cancel</a>
       <button type="submit" class="btn btn-dark text-center w-50">Continue</button>
     </form>
   </div>
-</div>
 {% endblock %}

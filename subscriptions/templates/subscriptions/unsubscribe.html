@@ -5,9 +5,9 @@
         <h4 class="text-center mb-3">Do you want to cancel <b>Subscription</b> ?</h4>
         <form method="POST" action="{% url 'subscriptions:unsubscribe' subscription_id %}">
             {% csrf_token %}
-            <div class="text-center p-0 w-100">
-                <input type="submit" class="btn btn-sm btn-dark" value="Yes" />
-                <a class= "btn btn-sm btn-outline-dark" href="{% url 'myprofile:index'%}">No</a>
+            <div class="d-flex gap-2 text-center p-0 w-100" style="min-width: 40%">
+                <input type="submit" class="btn btn-sm btn-dark" value="Yes" style="min-width: 50px;" />
+                <a class= "btn btn-sm btn-outline-dark d-flex justify-content-center align-items-center" href="{% url 'myprofile:index'%}" style="min-width: 50px;">No</a>
             </div>
         </form>
     </div>

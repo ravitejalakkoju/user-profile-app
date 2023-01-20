@@ -27,7 +27,7 @@ def update_my_profile(request):
 def delete_my_profile(request):
 	if request.method == 'POST':
 		if UsersManageService.delete_user(request.user.id):
-			return redirect('authentication:register')
+			return redirect('authentication:signup')
 		else:
 			return render(request, 'myprofile/delete-my-profile.html')
 	return render(request, 'myprofile/delete-my-profile.html')

@@ -2,7 +2,7 @@ div, h2, h3 {
     font-family: monospace;
 }
 
-.textinput, .emailinput {
+.textinput, .emailinput, input {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -42,9 +42,8 @@ div, h2, h3 {
 	display: none;
 }
 
-#div_id_is_subscribed {
-    margin: 1rem 0;
-    font-weight: bold;
+#error_1_id_email, #error_1_id_username {
+    color: #dc3545;
 }
 
 .readonlypasswordhashwidget {

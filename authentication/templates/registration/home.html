@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="m-auto text-center" style="width:90%;">
+        {% if not user.is_authenticated %}
+            <h2><b>Hey, there</b> <i class="fa-solid fa-ghost"></i> </h2>
+            <p>Welcome to the app with no name :)</p>
+            <p>Just create the account and see your profile in silence</p>
+            <p>ANDD!! ofc you can edit and delete it btw (cool feature isn't it)</p>
+            <br>
+            <b>See you again, Bye Bye !!</b>
+            <p style="font-size: 0.9rem;">(Need some help? That right corner thing is the login button <i class="fa-regular fa-face-surprise"></i>, click on it)</p>
+        {% else %}
+            <h2><b>Ohhh !!! Welcome Welcome </b> <i class="fa-solid fa-ghost"></i> </h2>
+            <br>
+            <p>Well well, you created an account knowing there's nothing impressive <i class="fa-regular fa-face-sad-cry"></i></p>
+            <p>Explore the cool features like edit and delete<br> (available here only <i class="fa-regular fa-face-laugh-wink"></i>)</p>
+            <br>
+            <b>Sayonara !!</b>
+            <p style="font-size: 0.9rem;">(Need help again?? That right corner name will give a lot of options !!)</p>
+        {% endif %}
+    </div>
+{% endblock content %}

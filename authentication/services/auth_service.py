@@ -21,7 +21,6 @@ class AuthService:
         try:
             new_user = User.objects.create_user(username=user['username'], email=user['email'], password=user['password1'])
             new_user.save()
-            
             authenticated_user = authenticate(
                 username=new_user.username,
                 password=request.POST['password1']
