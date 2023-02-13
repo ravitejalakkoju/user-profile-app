@@ -2,7 +2,7 @@ div, h2, h3 {
     font-family: monospace;
 }
 
-.textinput, .emailinput, input {
+.textinput, .emailinput {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
