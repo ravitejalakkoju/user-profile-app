@@ -1,3 +1,5 @@
-.vercel
 cert.pem
 key.pem
+cert.crt
+rootCA.key
+app/.env

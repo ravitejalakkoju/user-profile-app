@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&o)v(ma-lo9%mg63-m@4)#78#am3*bu^4ct_5rs7@8b+52ok-a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -128,16 +132,16 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         },
         'APP': {
-            'client_id': '639897171384-uveet337hq7a81vd3evv3epti2ef6fg6.apps.googleusercontent.com',
-            'secret': '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',
-            'key': 'AIzaSyC5LrIt5KcPhP9pcMB5MvAgJP8Z-CiMPxc'
+            'client_id': env('g_client_id'),
+            'secret': env('g_secret'),
+            'key': env('g_key')
         },
     },
     'facebook': {
         'APP': {
-            'client_id': '1108372296499816',
-            'secret': '61a9f5fdbd5d060a0d3bf9b63b4211a1',
-            'key': '61a9f5fdbd5d060a0d3bf9b63b4211a1',
+            'client_id': env('fb_client_id'),
+            'secret': env('fb_secret'),
+            'key': env('fb_key'),
             'scope': ['email', 'public_profile'],
         },
         'SCOPE': ['email', 'public_profile'],
@@ -166,7 +170,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = []
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
